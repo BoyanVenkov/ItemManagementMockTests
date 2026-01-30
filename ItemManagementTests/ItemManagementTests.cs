@@ -52,12 +52,23 @@ namespace ItemManagement.Tests
 
         }
 
+        //[Test]
+        //public void UpdateItem_ShouldCallUpdateItemOnRepository()
+        //{
+        //    //Continue
+        //}
+
+        ////Continue
+        ///
         [Test]
-        public void UpdateItem_ShouldCallUpdateItemOnRepository()
+        public void ValidateName_WhenNameIsValid_ShouldReturnTrue()
         {
-            //Continue
+            var result = _itemService.ValidateItemName("Valid Name");
+
+            Assert.That(result, Is.True);
+        
         }
 
-        //Continue
     }
+    
 }
