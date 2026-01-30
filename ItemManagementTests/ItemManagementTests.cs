@@ -18,7 +18,8 @@ namespace ItemManagement.Tests
         public void Setup()
         {
             // Arrange: Create a mock instance of IItemRepository
-
+            _mockRepository = new Mock<IItemRepository>();
+            _itemService = new ItemService(_mockRepository.Object);
             // Instantiate ItemService with the mocked repository
 
         }
@@ -26,10 +27,10 @@ namespace ItemManagement.Tests
         [Test]
         public void AddItem_ShouldCallAddItemOnRepository()
         {
-            // Act: Call AddItem on the service
+            _itemService.AddItem("Test Item");
 
 
-            // Assert: Verify that AddItem was called on the repository
+            _mockRepository.Verify(repo => repo.AddItem(It.IsAny<Item>()), Times.Once);
 
         }
 
