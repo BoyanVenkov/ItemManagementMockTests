@@ -68,6 +68,14 @@ namespace ItemManagement.Tests
             Assert.That(result, Is.True);
         
         }
+        [Test]
+        public void ValidateItemName_WhenNameIsTooLong_ShouldReturnFalse()
+        {
+            var result = _itemService.ValidateItemName("Valid Name Boyan");
+
+            Assert.That(result, Is.False);
+
+        }
 
     }
     
