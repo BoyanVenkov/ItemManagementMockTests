@@ -76,6 +76,14 @@ namespace ItemManagement.Tests
             Assert.That(result, Is.False);
 
         }
+        [Test]
+        public void ValidateItemName_WhenNameIsEmpty_ShouldReturnFalse()
+        {
+            var result = _itemService.ValidateItemName("");
+
+            Assert.That(result, Is.False);
+
+        }
 
     }
     
