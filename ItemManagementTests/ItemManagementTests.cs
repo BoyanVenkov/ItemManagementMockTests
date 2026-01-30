@@ -84,6 +84,16 @@ namespace ItemManagement.Tests
             Assert.That(result, Is.False);
 
         }
+        [Test]
+        public void GetItemById_ShouldReturnCorrectItem()
+        {
+            var item = new Item { Id = 8, Name = "Item 8" };
+            _mockRepository.Setup(repo => repo.GetItemById(8)).Returns(item);
+
+            var result = _itemService.GetItemById(8);
+
+            Assert.That(result, Is.EqualTo(item));
+        }
 
     }
 
