@@ -42,7 +42,7 @@ namespace ItemManagement.Tests
                 new Item { Id = 1, Name = "Item 1"},
                 new Item { Id = 2, Name = "Item 2"}
             };
-                
+
             _mockRepository.Setup(repo => repo.GetAllItems()).Returns(items);
 
             var result = _itemService.GetAllItems();
@@ -66,7 +66,7 @@ namespace ItemManagement.Tests
             var result = _itemService.ValidateItemName("Valid Name");
 
             Assert.That(result, Is.True);
-        
+
         }
         [Test]
         public void ValidateItemName_WhenNameIsTooLong_ShouldReturnFalse()
@@ -86,5 +86,5 @@ namespace ItemManagement.Tests
         }
 
     }
-    
+
 }
