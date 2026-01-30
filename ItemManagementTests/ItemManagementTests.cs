@@ -37,13 +37,18 @@ namespace ItemManagement.Tests
         [Test]
         public void GetAllItems_ShouldReturnAllItems()
         {
-            // Arrange: Setup mock repository to return a list of items
+            var items = new List<Item>
+            {
+                new Item { Id = 1, Name = "Item 1"},
+                new Item { Id = 2, Name = "Item 2"}
+            };
+                
+            _mockRepository.Setup(repo => repo.GetAllItems()).Returns(items);
 
+            var result = _itemService.GetAllItems();
 
-            // Act: Call GetAllItems on the service
-
-
-            // Assert: Check that the result matches the mock data
+            Assert.That(result.Count(), Is.EqualTo(items.Count()));
+            Assert.That(result, Is.EqualTo(items));
 
         }
 
