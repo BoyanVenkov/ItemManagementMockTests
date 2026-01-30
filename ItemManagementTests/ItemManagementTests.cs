@@ -17,10 +17,8 @@ namespace ItemManagement.Tests
         [SetUp]
         public void Setup()
         {
-            // Arrange: Create a mock instance of IItemRepository
             _mockRepository = new Mock<IItemRepository>();
             _itemService = new ItemService(_mockRepository.Object);
-            // Instantiate ItemService with the mocked repository
 
         }
 
@@ -52,14 +50,15 @@ namespace ItemManagement.Tests
 
         }
 
-        //[Test]
-        //public void UpdateItem_ShouldCallUpdateItemOnRepository()
-        //{
-        //    //Continue
-        //}
+        [Test]
+        public void UpdateItem_WhenItemNotFound_ShouldNotCallUpdate()
+        {
+            _mockRepository.Setup(repo => repo.GetItemById(It.IsAny<int>())).Returns((Item)null);
+            _itemService.UpdateItem(99, "Updated Name");
 
-        ////Continue
-        ///
+            _mockRepository.Verify(repo => repo.UpdateItem(It.IsAny<Item>()), Times.Never);
+        }
+
         [Test]
         public void ValidateName_WhenNameIsValid_ShouldReturnTrue()
         {
